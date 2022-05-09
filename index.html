@@ -10,8 +10,7 @@
     <h1>Vai zini cik ātri tu vari uzklikšķināt uz peles?</h1>
     <p>Uzklikšķini uz pirmā attēla un pēctam cik ātri vari noklikšķini uz otrā attēla </p>
     <p>Tavs rekacijas laiks: <span id="tavsLaiks"> Te būs redzams tavs laiks</span> </p>
-    <div id="attels" style="position: absolute;"></div>
-
+    <div id="attels" style="position: absolute; absolute background-color:#17BEBB "></div>
     <script>
         var sakums;//piefiksē sākuma laiku.
         var beigas;//piefiksē beigu laiku.
@@ -26,11 +25,11 @@
         
             document.getElementById("attels").style.top=top+"px";
             document.getElementById("attels").style.left=left+"px";
-            document.getElementById("attēls").style.backgroundColor="#17BEBB";
-
-
+            document.getElementById("attels").style.backgroundColor="#17BEBB";
+            document.getElementById("attels").style.display="block";
+            console.log("hei!");
         }
-            
+        paradies();
         
     </script>
 </body>
