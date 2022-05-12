@@ -10,26 +10,52 @@
     <h1>Vai zini cik ātri tu vari uzklikšķināt uz peles?</h1>
     <p>Uzklikšķini uz pirmā attēla un pēctam cik ātri vari noklikšķini uz otrā attēla </p>
     <p>Tavs rekacijas laiks: <span id="tavsLaiks"> Te būs redzams tavs laiks</span> </p>
-    <div id="attels" style="position: absolute; absolute background-color:#17BEBB "></div>
+    <div id="attels" style="position:absolute;   width:200px; height:200px"></div>
     <script>
         var sakums;//piefiksē sākuma laiku.
         var beigas;//piefiksē beigu laiku.
         var bilde=document.getElementById("attels");//JS piesaistu div kastei ar id=attels.
         var game=false;//definēts mainīgais game,kas saka,spēle sākuma nenotiek.
 
+
         //funkcija,kas nejauša puntkā parāda attēlu.
         function paradies(){
-            var top=Math.radnom()*150;//Nejauši izvēlas attēla y koordinātes.
+            var top=Math.random()*150;//Nejauši izvēlas attēla y koordinātes.
             var left=Math.random()*400//Nejausi izvēlas attēla x koordinātes>
 
         
             document.getElementById("attels").style.top=top+"px";
             document.getElementById("attels").style.left=left+"px";
-            document.getElementById("attels").style.backgroundColor="#17BEBB";
+           //document.getElementById("attels").style.backgroundColor="#17BEBB";
             document.getElementById("attels").style.display="block";
             console.log("hei!");
+            sakums=new Date().getTime();//piefiksē pirmā attēla parādīšanās laiku
+            console.log(sakums);
+
+        if(!game){
+            game=true;//Pasludina spēli par sākušos
+            bilde.innerHTML="<img src='W.jpg' width=200px>";
+            document.getElementById("attels").onclick= function(){
+                paradies();
+            }
         }
-        paradies();
+        else{
+            game=false;
+            bilde.innerHTML="<img src='Q.jpg' width=200px>";
+            document.getElementById("attels").onclick= function(){
+            document.getElementById("attels").style.display="none";
+            beigas= new Date().getTime();//Piefiksē spēles beigu laiku
+            var mansLaiks=(beigas-sakums)/1000;//Aprēķina reakcijas laiku
+            document.getElementById("tavsLaiks").innerHTML=mansLaiks+"s";
+            }
+        }
+    }
+      
+        //f-cija,kas bloku pēc nejauši izvēlēta laika
+        function bulba(){
+            setTimeout(paradies,Math.random()*2000)
+        }
+        bulba();
         
     </script>
 </body>
